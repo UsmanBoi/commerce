@@ -1,4 +1,22 @@
 const plugin = require('tailwindcss/plugin');
+const { colors: defaultColors } = require('tailwindcss/defaultTheme');
+
+const colors = {
+  ...defaultColors,
+  ...{
+    bgCol: '#FFF3EB',
+    bgCola: '#FFF8F0',
+    // bgCola: '#FFF8F3',
+    buttonCol: '#FFF8F3',
+    txtpri: '#FFF3EB',
+    txtsec: '#001',
+    tertiary: '#606c38',
+    myGrey: '#5D666F',
+    myYellow: {
+      500: '#EDAE0A'
+    }
+  }
+};
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -6,6 +24,7 @@ module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      colors: colors,
       fontFamily: {
         sans: ['var(--font-geist-sans)']
       },

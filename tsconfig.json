@@ -29,7 +29,10 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/styles.js",
-    "app/motion.js"
+    "app/motion.js",
+    "components/Brands.jsx",
+    "components/layout/Hero.jsx",
+    "app/contact/page.jsx"
   ],
   "exclude": ["node_modules"]
 }
