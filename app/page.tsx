@@ -1,3 +1,4 @@
+import Brands from 'components/Brands';
 import { Carousel } from 'components/carousel';
 import { ThreeItemGrid } from 'components/grid/three-items';
 import Hero from 'components/Hero';
@@ -14,6 +15,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Brands />
       <ThreeItemGrid />
       <Carousel />
       <Footer />

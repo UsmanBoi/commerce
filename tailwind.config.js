@@ -5,6 +5,9 @@ module.exports = {
   darkMode: 'class',
   content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    // colors: {
+    //   'my-color': '#606c38'
+    // },
     extend: {
       fontFamily: {
         sans: ['var(--font-geist-sans)']
