@@ -50,6 +50,7 @@ export type Image = {
 export type Menu = {
   title: string;
   path: string;
+  subItems?: Menu[]; // Recursively define sub-items
 };
 
 export type Money = {
@@ -222,15 +223,18 @@ export type ShopifyCollectionsOperation = {
 export type ShopifyMenuOperation = {
   data: {
     menu?: {
-      items: {
-        title: string;
-        url: string;
-      }[];
+      items: ShopifyMenuItem[]; // Use the new type with sub-items
     };
   };
   variables: {
     handle: string;
   };
+};
+
+export type ShopifyMenuItem = {
+  title: string;
+  url: string;
+  items?: ShopifyMenuItem[]; // Recursively define items
 };
 
 export type ShopifyPageOperation = {

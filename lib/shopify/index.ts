@@ -39,6 +39,7 @@ import {
   ShopifyCollectionProductsOperation,
   ShopifyCollectionsOperation,
   ShopifyCreateCartOperation,
+  ShopifyMenuItem,
   ShopifyMenuOperation,
   ShopifyPageOperation,
   ShopifyPagesOperation,
@@ -349,12 +350,15 @@ export async function getMenu(handle: string): Promise<Menu[]> {
     }
   });
 
-  return (
-    res.body?.data?.menu?.items.map((item: { title: string; url: string }) => ({
+  // Function to map menu items recursively
+  const mapItems = (items: ShopifyMenuItem[] | undefined): Menu[] =>
+    items?.map((item) => ({
       title: item.title,
-      path: item.url.replace(domain, '').replace('/collections', '/search').replace('/pages', '')
-    })) || []
-  );
+      path: item.url.replace(domain, '').replace('/collections', '/search').replace('/pages', ''),
+      subItems: mapItems(item.items) // Recursively map sub-items
+    })) || [];
+
+  return mapItems(res.body?.data?.menu?.items);
 }
 
 export async function getPage(handle: string): Promise<Page> {

@@ -45,7 +45,7 @@ export function Hero() {
           <p ref={heroSubHeadingRef} className={`${styles.HeroSubHeading}`}>
             Shop modern collections at the lowest price you can get
           </p>
-          <div ref={buttonRef}>
+          <div ref={buttonRef} className="w-fit">
             <ShopNow title="Shop Now" />
           </div>
         </div>
