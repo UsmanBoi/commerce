@@ -1,16 +1,11 @@
 import CartModal from 'components/cart/modal';
 import LogoSquare from 'components/logo-square';
-import { getCollections, getMenu } from 'lib/shopify';
+import { getMenu } from 'lib/shopify';
 import { Menu } from 'lib/shopify/types';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import MobileMenu from './mobile-menu';
 import Search, { SearchSkeleton } from './search';
-
-async function CollectionList() {
-  const collections = await getCollections();
-  return <div></div>;
-}
 
 const { SITE_NAME } = process.env;
 
@@ -18,14 +13,14 @@ export async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
 
   return (
-    <div className="sticky">
+    <div className="">
       <div
         style={{ wordSpacing: '6px' }}
         className="flex items-center justify-center bg-myGrey py-1 text-txtpri"
       >
         😍 Free Delivery on +$1000 order 😍
       </div>
-      <nav className="relative flex items-center justify-between px-4 py-4 lg:px-6">
+      <nav className="flex items-center justify-between px-4 py-4 lg:px-6">
         <div className="block flex-none md:hidden">
           <Suspense fallback={null}>
             <MobileMenu menu={menu} />
@@ -67,11 +62,6 @@ export async function Navbar() {
           </div>
         </div>
       </nav>
-      <div className="flex items-center justify-center gap-4">
-        <Suspense fallback={null}>
-          <CollectionList />
-        </Suspense>
-      </div>
     </div>
   );
 }

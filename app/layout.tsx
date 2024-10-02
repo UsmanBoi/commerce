@@ -5,7 +5,6 @@ import { getCart } from 'lib/shopify';
 import { ensureStartsWith } from 'lib/utils';
 import { cookies } from 'next/headers';
 import { ReactNode } from 'react';
-import { Toaster } from 'sonner';
 import './globals.css';
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
@@ -42,14 +41,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang="en" className={GeistSans.variable}>
-      <body className="bg-bgCola bg-opacity-60 text-tertiary selection:bg-red-50 selection:text-blue-400 dark:selection:bg-pink-500 dark:selection:text-white">
+      <body className="bg-bgCola bg-opacity-60 text-myGrey selection:bg-red-50 selection:text-blue-400 dark:selection:bg-pink-500 dark:selection:text-white">
         <CartProvider cartPromise={cart}>
           <Navbar />
-          <main>
-            {children}
-            <Toaster closeButton />
-            {/* <WelcomeToast /> */}
-          </main>
+          <main>{children}</main>
         </CartProvider>
       </body>
     </html>
