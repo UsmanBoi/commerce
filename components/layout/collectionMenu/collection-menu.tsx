@@ -6,7 +6,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
-export function CollectionMenuItem({ item }: { item: Menu }) {
+interface MenuItemProps {
+  item: Menu;
+  isSubItem?: boolean; // Add a flag to check if it's a sub-item
+}
+
+export function CollectionMenuItem({ item, isSubItem = false }: MenuItemProps) {
   const pathname = usePathname();
   const [active, setActive] = useState(pathname === item.path);
   const [isOpen, setIsOpen] = useState(false); // State to control submenu visibility
@@ -26,32 +31,36 @@ export function CollectionMenuItem({ item }: { item: Menu }) {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsOpen(false); // Hide submenu with a slight delay
-    }, 200); // Adjust this delay to your preference
+    }, 300); // Adjust this delay to your preference
   };
 
   return (
     <li
-      className="relative list-none"
+      className={clsx('relative list-none', {
+        'tracking-wide': isSubItem, // Add padding to sub-items for visual hierarchy
+        'font-semibold': !isSubItem // Make top-level items bold
+      })}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="flex items-center">
         <Link
+          target={item.path.startsWith('#') ? '' : '_blank'}
           href={item.path}
           className={clsx(
             'p-2 text-lg underline-offset-4 hover:font-semibold hover:text-tertiary hover:underline dark:hover:text-neutral-300 md:inline-block md:text-sm',
             {
-              'text-black dark:text-neutral-300': active
+              'text-black dark:text-neutral-300': active,
+              'text-gray-500': isSubItem // Apply a different color for sub-items
             }
           )}
         >
           {item.title}
-
-          {/* Conditionally render the arrow icon if the item has sub-items */}
         </Link>
 
-        {item.subItems && item.subItems.length > 0 && (
-          <span className="inline-block">
+        {/* Conditionally render the arrow icon if the item has sub-items */}
+        {!isSubItem && item.subItems && item.subItems.length > 0 && (
+          <span className="ml-1 inline-block">
             <svg
               className="h-4 w-4 fill-current text-gray-600 dark:text-neutral-300"
               xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +72,7 @@ export function CollectionMenuItem({ item }: { item: Menu }) {
         )}
       </div>
 
-      {/* Check if item has sub-items */}
+      {/* Check if the item has sub-items */}
       {item.subItems && item.subItems.length > 0 && (
         <ul
           className={clsx(
@@ -72,7 +81,7 @@ export function CollectionMenuItem({ item }: { item: Menu }) {
           )}
         >
           {item.subItems.map((subItem) => (
-            <CollectionMenuItem key={subItem.title} item={subItem} />
+            <CollectionMenuItem key={subItem.title} item={subItem} isSubItem />
           ))}
         </ul>
       )}

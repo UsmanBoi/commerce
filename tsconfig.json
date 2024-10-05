@@ -30,7 +30,7 @@
     ".next/types/**/*.ts",
     "app/styles.js",
     "app/motion.js",
-    "components/Brands.jsx",
+    "components/Categories.jsx",
     "components/layout/Hero.jsx",
     "app/contact/page.jsx"
   ],

@@ -7,7 +7,7 @@ const ShopNow = ({ title, className }: { title: string; className?: string }) =>
     <Link href="/search">
       <button
         className={clsx(
-          `${styles.Button} text-tertiary mt-4 transition-all duration-200 hover:rounded-xl hover:text-white`,
+          `${styles.Button} mt-4 transition-all duration-200 hover:rounded-xl`,
           className // Optional extra classes
         )}
       >

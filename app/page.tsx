@@ -1,5 +1,5 @@
-import Brands from 'components/Brands';
-import { Carousel } from 'components/carousel';
+// import { Carousel } from 'components/carousel';
+import CategoriesSec from 'components/Categories';
 import { ThreeItemGrid } from 'components/grid/three-items';
 import { Hero } from 'components/Hero';
 import Collection from 'components/layout/collectionMenu/collection';
@@ -17,9 +17,9 @@ export default function HomePage() {
     <>
       <Collection />
       <Hero />
-      <Brands />
+      <CategoriesSec />
       <ThreeItemGrid />
-      <Carousel />
+      {/* <Carousel /> */}
       <Footer />
     </>
   );

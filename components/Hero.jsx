@@ -46,7 +46,7 @@ export function Hero() {
             Shop modern collections at the lowest price you can get
           </p>
           <div ref={buttonRef} className="w-fit">
-            <ShopNow title="Shop Now" />
+            <ShopNow title="Shop Now" className="hover:text-white" />
           </div>
         </div>
         <Image
