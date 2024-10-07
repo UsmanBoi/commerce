@@ -48,7 +48,7 @@ export function CollectionMenuItem({ item, isSubItem = false }: MenuItemProps) {
           target={item.path.startsWith('#') ? '' : '_blank'}
           href={item.path}
           className={clsx(
-            'p-2 text-lg underline-offset-4 hover:font-semibold hover:text-tertiary hover:underline dark:hover:text-neutral-300 md:inline-block md:text-sm',
+            'text-lg underline-offset-4 hover:font-semibold hover:text-tertiary hover:underline dark:hover:text-neutral-300 md:inline-block md:text-sm',
             {
               'text-black dark:text-neutral-300': active,
               'text-gray-500': isSubItem // Apply a different color for sub-items
@@ -60,7 +60,7 @@ export function CollectionMenuItem({ item, isSubItem = false }: MenuItemProps) {
 
         {/* Conditionally render the arrow icon if the item has sub-items */}
         {!isSubItem && item.subItems && item.subItems.length > 0 && (
-          <span className="ml-1 inline-block">
+          <span className="ml-[2px] inline-block">
             <svg
               className="h-4 w-4 fill-current text-gray-600 dark:text-neutral-300"
               xmlns="http://www.w3.org/2000/svg"
@@ -71,17 +71,18 @@ export function CollectionMenuItem({ item, isSubItem = false }: MenuItemProps) {
           </span>
         )}
       </div>
-
       {/* Check if the item has sub-items */}
       {item.subItems && item.subItems.length > 0 && (
         <ul
           className={clsx(
-            'absolute left-0 z-50 mt-2 w-40 bg-white p-2 shadow-lg transition-all duration-200',
-            isOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-10 opacity-0'
+            'absolute left-0 z-50 mt-2 rounded-b-md bg-white p-2 shadow-lg transition-all duration-200',
+            isOpen ? 'visible translate-y-2 opacity-100' : 'invisible -translate-y-10 opacity-0'
           )}
         >
           {item.subItems.map((subItem) => (
-            <CollectionMenuItem key={subItem.title} item={subItem} isSubItem />
+            <div className="py-2">
+              <CollectionMenuItem key={subItem.title} item={subItem} isSubItem />
+            </div>
           ))}
         </ul>
       )}
@@ -94,7 +95,7 @@ export default function CollectionMenu({ menu }: { menu: Menu[] }) {
 
   return (
     <nav>
-      <div className="flex gap-4">
+      <div className="flex gap-8">
         {menu.map((item: Menu) => (
           <CollectionMenuItem key={item.title} item={item} />
         ))}

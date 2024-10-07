@@ -16,10 +16,14 @@ const CategoryCard = ({ title, imgsrc, url }) => {
             priority={false}
             className="rounded-md object-cover"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-25 blur-[2px] group-hover:bg-red-100 group-hover:bg-opacity-15"></div>
+          <div className="absolute inset-0 bg-black bg-opacity-20 blur-[2px] transition-all group-hover:bg-blue-200 group-hover:bg-opacity-20"></div>
         </div>
-        <div className="absolute inset-0 z-20 flex items-center justify-center text-center">
-          <span style={{ wordSpacing: '4px' }} className="uppercase text-bgCola">
+        <div className="absolute z-20 flex min-w-32 items-center justify-center p-2">
+          <div className="absolute h-full w-full translate-y-10 rounded-md bg-black bg-opacity-0 text-center transition-all duration-300 group-hover:translate-y-0 group-hover:bg-opacity-20" />
+          <span
+            style={{ wordSpacing: '4px' }}
+            className="text-center uppercase text-bgCola transition-all duration-300 group-hover:text-lg group-hover:tracking-wide"
+          >
             {title}
           </span>
         </div>

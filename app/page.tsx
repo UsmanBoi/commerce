@@ -1,5 +1,7 @@
 // import { Carousel } from 'components/carousel';
+import { Carousel } from 'components/carousel';
 import CategoriesSec from 'components/Categories';
+import Featured from 'components/Featured';
 import { ThreeItemGrid } from 'components/grid/three-items';
 import { Hero } from 'components/Hero';
 import Collection from 'components/layout/collectionMenu/collection';
@@ -18,8 +20,9 @@ export default function HomePage() {
       <Collection />
       <Hero />
       <CategoriesSec />
+      <Featured />
       <ThreeItemGrid />
-      {/* <Carousel /> */}
+      <Carousel />
       <Footer />
     </>
   );

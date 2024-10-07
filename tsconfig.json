@@ -32,7 +32,8 @@
     "app/motion.js",
     "components/Categories.jsx",
     "components/layout/Hero.jsx",
-    "app/contact/page.jsx"
+    "app/contact/page.jsx",
+    "components/Featured.jsx"
   ],
   "exclude": ["node_modules"]
 }
