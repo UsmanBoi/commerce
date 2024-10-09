@@ -23,8 +23,8 @@ export async function Featured() {
                 />
               </div>
             </Link>
-            <h3 className="self-start">{product.title}</h3>
-            <div className="self-start">{product.priceRange.maxVariantPrice.amount}</div>
+            <h3 className="">{product.title}</h3>
+            <div className="">{product.priceRange.maxVariantPrice.amount}</div>
           </div>
         ))}
       </div>

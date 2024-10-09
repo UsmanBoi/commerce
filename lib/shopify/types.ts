@@ -58,6 +58,13 @@ export type Money = {
   currencyCode: string;
 };
 
+// added by me
+type MoneyV2 = {
+  amount: string;
+  currencyCode: string;
+};
+//
+
 export type Page = {
   id: string;
   title: string;
@@ -94,6 +101,7 @@ export type ProductVariant = {
     value: string;
   }[];
   price: Money;
+  priceV2: MoneyV2;
 };
 
 export type SEO = {

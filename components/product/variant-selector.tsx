@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import { useProduct, useUpdateURL } from 'components/product/product-context';
-import { ProductVariant } from 'lib/shopify/types';
+import { ProductVariant, Money } from 'lib/shopify/types';
 
 type Combination = {
   id: string;
@@ -15,10 +15,9 @@ export function VariantSelector({
   variants,
   onVariantChange
 }: {
-  // options: ProductOption[];
   options: { id: string; name: string; values: string[] }[];
   variants: ProductVariant[];
-  onVariantChange: Function;
+  onVariantChange: (variantId: string) => void;
 }) {
   const { state, updateOption } = useProduct();
   const updateURL = useUpdateURL();
@@ -43,19 +42,6 @@ export function VariantSelector({
       <dl className="mb-8">
         <dt className="mb-4 text-sm uppercase tracking-wide">{option.name}</dt>
         <dd className="flex flex-wrap gap-3">
-          {options.map((option) => (
-            <div key={option.id}>
-              <label>{option.name}</label>
-              <select onChange={(e) => onVariantChange(e.target.value)}>
-                {variants.map((variant) => (
-                  <option key={variant.id} value={variant.id}>
-                    {variant.selectedOptions.map((opt) => opt.value).join(', ')}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ))}
-
           {option.values.map((value) => {
             const optionNameLowerCase = option.name.toLowerCase();
 
@@ -79,11 +65,14 @@ export function VariantSelector({
 
             return (
               <button
-                formAction={() => {
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent default button behavior
                   const newState = updateOption(optionNameLowerCase, value);
                   updateURL(newState);
+                  onVariantChange(
+                    combinations.find((c) => c[optionNameLowerCase] === value)?.id || ''
+                  );
                 }}
-                onChange={(e) => onVariantChange(e.target.value)}
                 key={value}
                 aria-disabled={!isAvailableForSale}
                 disabled={!isAvailableForSale}
