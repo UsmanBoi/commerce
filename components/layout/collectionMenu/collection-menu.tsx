@@ -80,8 +80,8 @@ export function CollectionMenuItem({ item, isSubItem = false }: MenuItemProps) {
           )}
         >
           {item.subItems.map((subItem) => (
-            <div className="py-2">
-              <CollectionMenuItem key={subItem.title} item={subItem} isSubItem />
+            <div className="py-2" key={subItem.title}>
+              <CollectionMenuItem item={subItem} isSubItem />
             </div>
           ))}
         </ul>

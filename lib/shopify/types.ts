@@ -70,9 +70,14 @@ export type Page = {
 };
 
 export type Product = Omit<ShopifyProduct, 'variants' | 'images'> & {
-  variants: ProductVariant[];
+  variants: ProductVariant[]; // This is already correct based on your types.ts
   images: Image[];
 };
+
+// export type Product = Omit<ShopifyProduct, 'variants' | 'images'> & {
+//   variants: ProductVariant[];
+//   images: Image[];
+// };
 
 export type ProductOption = {
   id: string;

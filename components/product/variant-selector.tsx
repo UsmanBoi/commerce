@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import { useProduct, useUpdateURL } from 'components/product/product-context';
-import { ProductOption, ProductVariant } from 'lib/shopify/types';
+import { ProductVariant } from 'lib/shopify/types';
 
 type Combination = {
   id: string;
@@ -12,10 +12,13 @@ type Combination = {
 
 export function VariantSelector({
   options,
-  variants
+  variants,
+  onVariantChange
 }: {
-  options: ProductOption[];
+  // options: ProductOption[];
+  options: { id: string; name: string; values: string[] }[];
   variants: ProductVariant[];
+  onVariantChange: Function;
 }) {
   const { state, updateOption } = useProduct();
   const updateURL = useUpdateURL();
@@ -40,6 +43,19 @@ export function VariantSelector({
       <dl className="mb-8">
         <dt className="mb-4 text-sm uppercase tracking-wide">{option.name}</dt>
         <dd className="flex flex-wrap gap-3">
+          {options.map((option) => (
+            <div key={option.id}>
+              <label>{option.name}</label>
+              <select onChange={(e) => onVariantChange(e.target.value)}>
+                {variants.map((variant) => (
+                  <option key={variant.id} value={variant.id}>
+                    {variant.selectedOptions.map((opt) => opt.value).join(', ')}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ))}
+
           {option.values.map((value) => {
             const optionNameLowerCase = option.name.toLowerCase();
 
@@ -67,6 +83,7 @@ export function VariantSelector({
                   const newState = updateOption(optionNameLowerCase, value);
                   updateURL(newState);
                 }}
+                onChange={(e) => onVariantChange(e.target.value)}
                 key={value}
                 aria-disabled={!isAvailableForSale}
                 disabled={!isAvailableForSale}
