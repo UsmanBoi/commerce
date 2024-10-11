@@ -18,7 +18,11 @@ export async function Featured() {
                   src={product.featuredImage?.url}
                   fill
                   alt={product.title}
-                  priority
+                  priority={false}
+                  sizes="
+                  (max-width: 768px) 160px, 
+                  (max-width: 1024px) 160px, 
+                  160px"
                   className="object-fit object-cover"
                 />
               </div>

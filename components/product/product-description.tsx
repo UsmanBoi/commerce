@@ -9,7 +9,7 @@ import { VariantSelector } from './variant-selector';
 export function ProductDescription({ product }: { product: Product }) {
   // Initialize state to keep track of the selected variant
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(
-    product.variants[0] || null
+    product.variants[4] || null
   );
 
   // Handle variant selection change
@@ -45,7 +45,7 @@ export function ProductDescription({ product }: { product: Product }) {
       <VariantSelector
         options={product.options}
         variants={product.variants}
-        onVariantChange={handleVariantChange}
+        onVariantChangeAction={handleVariantChange}
       />
 
       {product.descriptionHtml ? (

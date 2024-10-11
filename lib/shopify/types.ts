@@ -129,10 +129,12 @@ export type ShopifyProduct = {
   description: string;
   descriptionHtml: string;
   options: ProductOption[];
+  pricepro: ProductVariant;
   priceRange: {
     maxVariantPrice: Money;
     minVariantPrice: Money;
   };
+  // variants: ProductVariant[]; // Array of ProductVariant with exact prices for each variant
   variants: Connection<ProductVariant>;
   featuredImage: Image;
   images: Connection<Image>;

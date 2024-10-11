@@ -13,12 +13,13 @@ type Combination = {
 export function VariantSelector({
   options,
   variants,
-  onVariantChange
+  onVariantChangeAction
 }: {
   // options: ProductOption[];
   options: { id: string; name: string; values: string[] }[];
   variants: ProductVariant[];
-  onVariantChange: Function;
+  // onVariantChangeAction: Function;
+  onVariantChangeAction: (variantId: string) => void;
 }) {
   const { state, updateOption } = useProduct();
   const updateURL = useUpdateURL();
@@ -46,7 +47,7 @@ export function VariantSelector({
           {options.map((option) => (
             <div key={option.id}>
               <label>{option.name}</label>
-              <select onChange={(e) => onVariantChange(e.target.value)}>
+              <select onChange={(e) => onVariantChangeAction(e.target.value)}>
                 {variants.map((variant) => (
                   <option key={variant.id} value={variant.id}>
                     {variant.selectedOptions.map((opt) => opt.value).join(', ')}
@@ -83,7 +84,7 @@ export function VariantSelector({
                   const newState = updateOption(optionNameLowerCase, value);
                   updateURL(newState);
                 }}
-                onChange={(e) => onVariantChange(e.target.value)}
+                onClick={() => onVariantChangeAction(value)}
                 key={value}
                 aria-disabled={!isAvailableForSale}
                 disabled={!isAvailableForSale}

@@ -1,4 +1,5 @@
 import { CartProvider } from 'components/cart/cart-context';
+import Collection from 'components/layout/collectionMenu/collection';
 import { Navbar } from 'components/layout/navbar';
 import { GeistSans } from 'geist/font/sans';
 import { getCart } from 'lib/shopify';
@@ -44,6 +45,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <body className="bg-bgCola bg-opacity-60 text-tertiary selection:bg-red-50 selection:text-blue-400 dark:selection:bg-pink-500 dark:selection:text-white">
         <CartProvider cartPromise={cart}>
           <Navbar />
+          <Collection />
           <main>{children}</main>
         </CartProvider>
       </body>

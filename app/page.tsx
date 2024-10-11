@@ -4,7 +4,6 @@ import CategoriesSec from 'components/Categories';
 import Featured from 'components/Featured';
 import { ThreeItemGrid } from 'components/grid/three-items';
 import { Hero } from 'components/Hero';
-import Collection from 'components/layout/collectionMenu/collection';
 import Footer from 'components/layout/footer';
 
 export const metadata = {
@@ -17,7 +16,6 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-      <Collection />
       <Hero />
       <CategoriesSec />
       <Featured />
