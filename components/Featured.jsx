@@ -1,19 +1,31 @@
+// 'use client';
 import { styles } from 'app/styles';
 import { getCollectionProducts } from 'lib/shopify';
 import Image from 'next/image';
 import Link from 'next/link';
+// import { Product, ProductVariant } from 'lib/shopify/types';
+// import { useState } from 'react';
 
 export async function Featured() {
-  const featuredProducts = await getCollectionProducts({ collection: 'hidden-featured-products' });
-  if (!featuredProducts.length) return null;
+  const products = await getCollectionProducts({ collection: 'hidden-featured-products' });
+  if (!products.length) return null;
+
+  const featuredProducts = [...products];
+
+  // const [selectedVariant, setSelectedVariant] =
+  //   (useState < ProductVariant) | (null > (product.variants[0] || null));
+
   return (
     <div className="my-20 flex h-full w-full flex-col items-center gap-8">
-      <h3 className={styles.SecHeading}>Featured Products</h3>
+      <div className="flex flex-col items-center gap-2 py-2">
+        <h2 className={styles.SecHeading}>Featured Products</h2>
+        <h3 className={styles.SecSubHeading}>Shop what Others love</h3>
+      </div>
       <div className="flex h-full w-full flex-wrap items-center justify-center gap-4 px-4">
         {featuredProducts.map((product, i) => (
-          <div className="flex h-80 w-80 flex-col items-center gap-2" key={`${product.handle}${i}`}>
+          <div className="flex h-full w-80 flex-col gap-2" key={`${product.handle}${i}`}>
             <Link href={`/product/${product.handle}`} prefetch={true}>
-              <div className="relative h-40 w-40">
+              <div className="relative h-80 w-80 p-2">
                 <Image
                   src={product.featuredImage?.url}
                   fill
@@ -27,8 +39,9 @@ export async function Featured() {
                 />
               </div>
             </Link>
-            <h3 className="self-start">{product.title}</h3>
-            <div className="self-start">{product.priceRange.maxVariantPrice.amount}</div>
+            <h3 className="">{product.title}</h3>
+            <div className="truncate">{product.description}</div>
+            {/* <AddToCart /> */}
           </div>
         ))}
       </div>
