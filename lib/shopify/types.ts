@@ -92,6 +92,7 @@ export type ProductVariant = {
   selectedOptions: {
     name: string;
     value: string;
+    priceV2: Money;
   }[];
   price: Money;
 };

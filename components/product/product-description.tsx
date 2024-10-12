@@ -6,14 +6,17 @@ import { Product, ProductVariant } from 'lib/shopify/types';
 import { useState } from 'react';
 import { VariantSelector } from './variant-selector';
 
-export function ProductDescription({ product }: { product: Product }) {
+export function ProductDescription({
+  product
+  // selectedVariantId
+}: {
+  product: Product;
+  // selectedVariantId: ProductVariant | null;
+}) {
   // Initialize state to keep track of the selected variant
-  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(
-    product.variants[4] || null
-  );
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
 
-  // Handle variant selection change
-  const handleVariantChange = (variantId: string) => {
+  const handleVariantChange = (variantId?: string | undefined) => {
     const variant = product.variants.find((variant) => variant.id === variantId) || null;
     setSelectedVariant(variant);
   };
@@ -34,8 +37,8 @@ export function ProductDescription({ product }: { product: Product }) {
         ) : (
           <div className="mr-auto w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
             <Price
-              amount={product.priceRange.maxVariantPrice.amount}
-              currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+              amount={product.priceRange.minVariantPrice.amount}
+              currencyCode={product.priceRange.minVariantPrice.currencyCode}
             />
           </div>
         )}

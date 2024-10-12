@@ -15,11 +15,9 @@ export function VariantSelector({
   variants,
   onVariantChangeAction
 }: {
-  // options: ProductOption[];
   options: { id: string; name: string; values: string[] }[];
   variants: ProductVariant[];
-  // onVariantChangeAction: Function;
-  onVariantChangeAction: (variantId: string) => void;
+  onVariantChangeAction: Function;
 }) {
   const { state, updateOption } = useProduct();
   const updateURL = useUpdateURL();
@@ -44,19 +42,6 @@ export function VariantSelector({
       <dl className="mb-8">
         <dt className="mb-4 text-sm uppercase tracking-wide">{option.name}</dt>
         <dd className="flex flex-wrap gap-3">
-          {options.map((option) => (
-            <div key={option.id}>
-              <label>{option.name}</label>
-              <select onChange={(e) => onVariantChangeAction(e.target.value)}>
-                {variants.map((variant) => (
-                  <option key={variant.id} value={variant.id}>
-                    {variant.selectedOptions.map((opt) => opt.value).join(', ')}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ))}
-
           {option.values.map((value) => {
             const optionNameLowerCase = option.name.toLowerCase();
 
@@ -75,6 +60,11 @@ export function VariantSelector({
               )
             );
 
+            // Find the variant by matching all selected options in the state
+            const variantId = variants.find((variant) =>
+              variant.selectedOptions.every((opt) => state[opt.name.toLowerCase()] === opt.value)
+            )?.id;
+
             // The option is active if it's in the selected options.
             const isActive = state[optionNameLowerCase] === value;
 
@@ -83,8 +73,15 @@ export function VariantSelector({
                 formAction={() => {
                   const newState = updateOption(optionNameLowerCase, value);
                   updateURL(newState);
+                  // Find the correct variant based on the updated state
+                  const newVariantId = variants.find((variant) =>
+                    variant.selectedOptions.every(
+                      (opt) => newState[opt.name.toLowerCase()] === opt.value
+                    )
+                  )?.id;
+                  onVariantChangeAction(newVariantId);
                 }}
-                onClick={() => onVariantChangeAction(value)}
+                onClick={() => onVariantChangeAction(variantId)}
                 key={value}
                 aria-disabled={!isAvailableForSale}
                 disabled={!isAvailableForSale}

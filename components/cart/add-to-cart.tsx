@@ -27,7 +27,7 @@ function SubmitButton({
     );
   }
 
-  console.log(selectedVariantId);
+  // console.log(selectedVariantId);
   if (!selectedVariantId) {
     return (
       <button
@@ -58,7 +58,13 @@ function SubmitButton({
   );
 }
 
-export function AddToCart({ product }: { product: Product }) {
+export function AddToCart({
+  product,
+  selectedVariant
+}: {
+  product: Product;
+  selectedVariant: ProductVariant | null;
+}) {
   const { variants, availableForSale } = product;
   const { addCartItem } = useCart();
   const { state } = useProduct();
@@ -68,7 +74,8 @@ export function AddToCart({ product }: { product: Product }) {
     variant.selectedOptions.every((option) => option.value === state[option.name.toLowerCase()])
   );
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
-  const selectedVariantId = variant?.id || defaultVariantId;
+  const selectedVariantId = selectedVariant?.id || defaultVariantId;
+  // const selectedVariantId = variant?.id || defaultVariantId;
   const actionWithVariant = formAction.bind(null, selectedVariantId);
   const finalVariant = variants.find((variant) => variant.id === selectedVariantId)!;
 
