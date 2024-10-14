@@ -11,7 +11,13 @@ const colors = {
     txtpri: '#FFF3EB',
     txtsec: '#001',
     tertiary: '#606c38',
-    myGrey: '#5D666F',
+    myGray: '#5D666F',
+    slateGray: '#3A3F44',
+    onyx: '#353839',
+    gunMetal: '#2C3E50',
+    deepSpace: '#2D2D2D',
+    graphite: '#383838',
+    charcoal: '#333333',
     myYellow: {
       500: '#EDAE0A'
     }

@@ -16,7 +16,7 @@ export async function Navbar() {
     <div className="">
       <div
         style={{ wordSpacing: '6px' }}
-        className="flex items-center justify-center bg-myGrey py-1 text-txtpri"
+        className="bg-myGray flex items-center justify-center py-1 text-txtpri"
       >
         😍 Free Delivery on +$1000 order 😍
       </div>

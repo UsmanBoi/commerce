@@ -66,7 +66,11 @@ const ContactPage = ({ title }) => {
             className="border-b-2 border-b-black bg-transparent outline-none"
           />
           <p>Regards</p>
-          <ShopNow title="Send" className="w-full bg-myGrey text-bgCola hover:text-tertiary" />
+          <ShopNow
+            title="Send"
+            className="bg-myGray w-full text-bgCola hover:text-tertiary"
+            link=""
+          />
           {success && (
             <span className="text-center font-semibold text-green-500">
               Your message has been sent successfully. 🎊

@@ -93,6 +93,7 @@ export default function CartModal() {
                     <ShopNow
                       title="Continue Shopping"
                       className="bg-tertiary text-txtpri hover:rounded-md"
+                      link="/search"
                     />
                   </div>
                 </div>
