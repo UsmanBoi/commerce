@@ -69,6 +69,31 @@ export type Page = {
   updatedAt: string;
 };
 
+// aftterr
+export interface Article {
+  title: string;
+  handle: string;
+  publishedAt: string;
+  excerpt: string;
+  authorV2?: {
+    bio?: string;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    name?: string;
+  };
+  image?: {
+    src?: string;
+    altText?: string;
+  };
+  contentHtml: string;
+}
+
+export interface Blog {
+  title: string;
+  articles: Article[];
+}
+
 export type Product = Omit<ShopifyProduct, 'variants' | 'images'> & {
   variants: ProductVariant[]; // This is already correct based on your types.ts
   images: Image[];
