@@ -1,6 +1,67 @@
 import { shopifyFetch } from '..'; // Assuming you have a utility for Shopify fetch
 import { Article } from '../types';
 
+export const getAllBlogsQuery = `
+  query GetAllBlogs {
+    blogs(first: 10) {
+      edges {
+        node {
+          title
+          handle
+          articles(first: 10) {
+            edges {
+              node {
+                title
+                excerpt
+                handle
+                publishedAt
+                image {
+                  src
+                  altText
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export async function getAllBlogs() {
+  const res = await shopifyFetch<{
+    data: {
+      blogs: {
+        edges: {
+          node: {
+            title: string;
+            handle: string;
+            articles: {
+              edges: {
+                node: {
+                  title: string;
+                  excerpt: string;
+                  handle: string;
+                  publishedAt: string;
+                  image: {
+                    src: string;
+                    altText: string;
+                  };
+                };
+              }[];
+            };
+          };
+        }[];
+      };
+    };
+  }>({
+    query: getAllBlogsQuery,
+    variables: {}
+  });
+
+  return res.body.data.blogs.edges.map((edge) => edge.node);
+}
+
 export const getBlogPostsQuery = `
  query GetBlogPosts($handle: String!) {
   blog(handle: $handle) {
