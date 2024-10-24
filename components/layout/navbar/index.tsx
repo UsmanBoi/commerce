@@ -1,9 +1,8 @@
 import CartModal from 'components/cart/modal';
-import LogoSquare from 'components/logo-square';
 import { getMenu } from 'lib/shopify';
 import { Menu } from 'lib/shopify/types';
 import Link from 'next/link';
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import MobileMenu from './mobile-menu';
 import Search, { SearchSkeleton } from './search';
 
@@ -16,12 +15,12 @@ export async function Navbar() {
     <div className="">
       <div
         style={{ wordSpacing: '6px' }}
-        className="bg-myGray flex items-center justify-center py-1 text-txtpri"
+        className="flex items-center justify-center bg-myGray py-1 text-txtpri"
       >
-        😍 Free Delivery on +$1000 order 😍
+        😍 Free Delivery on <span className="px-2 text-gunMetal">+$250</span> order 😍
       </div>
-      <nav className="flex items-center justify-between px-4 py-4 lg:px-6">
-        <div className="block flex-none md:hidden">
+      <nav className="flex items-center justify-between px-4 py-3 lg:px-6">
+        <div className="block flex-none lg:hidden">
           <Suspense fallback={null}>
             <MobileMenu menu={menu} />
           </Suspense>
@@ -29,26 +28,36 @@ export async function Navbar() {
         <div className="flex w-full items-center justify-between gap-2">
           <div className="flex w-full items-center md:w-1/3">
             <Link href="/" prefetch={true} className="mr-2 flex w-full md:w-auto lg:mr-6">
-              <LogoSquare />
-              {/* <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
-              {SITE_NAME}
-              </div> */}
+              {/* <LogoSquare /> */}
+              <div className="hidden flex-none text-center text-xs font-medium uppercase leading-tight lg:block">
+                {SITE_NAME?.toString()
+                  .replaceAll(' ', '<br />')
+                  .split('<br />')
+                  .map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+              </div>
             </Link>
             <div className="px-6">
               {menu.length ? (
-                <ul className="hidden gap-8 px-12 text-sm lg:flex lg:items-center">
-                  {menu.map((item: Menu) => (
-                    <li key={item.title}>
-                      <Link
-                        href={item.path}
-                        prefetch={true}
-                        className="text-base font-medium text-[#495057] underline-offset-4 hover:text-black hover:underline dark:text-red-400 dark:hover:text-neutral-300"
-                      >
-                        {item.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <>
+                  <ul className="hidden gap-8 px-12 text-sm lg:flex lg:items-center">
+                    {menu.map((item: Menu) => (
+                      <li key={item.title}>
+                        <Link
+                          href={item.path}
+                          prefetch={true}
+                          className="text-base font-medium text-[#495057] underline-offset-4 hover:text-black hover:underline dark:text-red-400 dark:hover:text-neutral-300"
+                        >
+                          {item.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </>
               ) : null}
             </div>
           </div>

@@ -1,4 +1,5 @@
 // import { Carousel } from 'components/carousel';
+import BathtubSec from 'components/BathtubSec';
 import { Carousel } from 'components/carousel';
 import CategoriesSec from 'components/Categories';
 import Featured from 'components/Featured';
@@ -18,6 +19,7 @@ export default function HomePage() {
     <>
       <Hero />
       <CategoriesSec />
+      <BathtubSec />
       <Featured />
       <ThreeItemGrid />
       <Carousel />

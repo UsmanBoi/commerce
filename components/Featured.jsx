@@ -33,8 +33,8 @@ export async function Featured() {
                     priority={false}
                     sizes="
                   (max-width: 768px) 160px, 
-                  (max-width: 1024px) 200px, 
-                  160px"
+                  (max-width: 1024px) 220px, 
+                  280px"
                     className="object-fit rounded object-cover"
                   />
                 </div>

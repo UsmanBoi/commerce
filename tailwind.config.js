@@ -4,13 +4,15 @@ const { colors: defaultColors } = require('tailwindcss/defaultTheme');
 const colors = {
   ...defaultColors,
   ...{
+    secwhite: '#F2F3F4',
     bgCol: '#FFF3EB',
     bgCola: '#FFF8F0',
-    // bgCola: '#FFF8F3',
     buttonCol: '#FFF8F3',
     txtpri: '#FFF3EB',
     txtsec: '#001',
-    tertiary: '#606c38',
+    tertiary: '#3A3F44',
+    // tertiary: '#606c38',
+    olive: '#606c38',
     myGray: '#5D666F',
     slateGray: '#3A3F44',
     onyx: '#353839',

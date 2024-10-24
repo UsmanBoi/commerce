@@ -38,7 +38,7 @@ export function CollectionMenuItem({ item, isSubItem = false }: MenuItemProps) {
     <li
       className={clsx('relative list-none', {
         'tracking-wide': isSubItem, // Add padding to sub-items for visual hierarchy
-        'font-semibold': !isSubItem // Make top-level items bold
+        'font-medium': !isSubItem // Make top-level items bold
       })}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -48,7 +48,7 @@ export function CollectionMenuItem({ item, isSubItem = false }: MenuItemProps) {
           target={item.path.startsWith('#') ? '' : '_blank'}
           href={item.path}
           className={clsx(
-            'text-lg underline-offset-4 hover:font-semibold hover:text-tertiary hover:underline dark:hover:text-neutral-300 md:inline-block md:text-sm',
+            'text-sm leading-tight underline-offset-4 hover:font-semibold hover:text-tertiary hover:underline dark:hover:text-neutral-300 md:inline-block lg:text-base lg:leading-normal',
             {
               'text-black dark:text-neutral-300': active,
               'text-gray-500': isSubItem // Apply a different color for sub-items
@@ -60,11 +60,11 @@ export function CollectionMenuItem({ item, isSubItem = false }: MenuItemProps) {
 
         {/* Conditionally render the arrow icon if the item has sub-items */}
         {!isSubItem && item.subItems && item.subItems.length > 0 && (
-          <span className="ml-[2px] inline-block">
+          <span className="inline-block">
             <svg
               className="h-4 w-4 fill-current text-gray-600 dark:text-neutral-300"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
+              viewBox="0 0 22 22"
             >
               <path d="M7 10l5 5 5-5H7z" />
             </svg>
@@ -95,7 +95,7 @@ export default function CollectionMenu({ menu }: { menu: Menu[] }) {
 
   return (
     <nav>
-      <div className="flex gap-8">
+      <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8">
         {menu.map((item: Menu) => (
           <CollectionMenuItem key={item.title} item={item} />
         ))}

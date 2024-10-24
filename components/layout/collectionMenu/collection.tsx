@@ -8,7 +8,7 @@ export default async function Collection() {
 
   return (
     <nav className="">
-      <div className="flex w-full flex-col items-start gap-6 border-t border-neutral-200 px-6 py-4">
+      <div className="flex w-full flex-col items-start gap-6 border-y border-neutral-200 px-6 py-4">
         <Suspense
           fallback={
             <div className="flex h-[188px] w-[200px] flex-col gap-2">
