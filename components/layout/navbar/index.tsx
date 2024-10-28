@@ -12,13 +12,7 @@ export async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
 
   return (
-    <div className="">
-      <div
-        style={{ wordSpacing: '6px' }}
-        className="flex items-center justify-center bg-myGray py-1 text-txtpri"
-      >
-        😍 Free Delivery on <span className="px-2 text-gunMetal">+$250</span> order 😍
-      </div>
+    <div className="sticky top-0 z-30 bg-white">
       <nav className="flex items-center justify-between px-4 py-3 lg:px-6">
         <div className="block flex-none lg:hidden">
           <Suspense fallback={null}>

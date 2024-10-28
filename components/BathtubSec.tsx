@@ -30,7 +30,7 @@ export async function BathtubSec() {
         {/* Right container - divided into top and bottom */}
         <div className="grid grid-rows-2">
           {/* Top section - Text and CTA */}
-          <div className="flex flex-col justify-center bg-gray-100 px-8 py-4 text-center sm:p-8">
+          <div className="flex flex-col justify-center bg-gray-100 text-center sm:p-8">
             <h3 className="text-3xl font-medium">Deep soaking bathtubs are always in style</h3>
             <p className="my-4 text-gray-700">
               Sleek, contemporary styling that goes well with classic and modern décor.

@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Base font size */
+  --base-font-size: 16px;
+
+  /* Scaled font sizes using the golden ratio */
+  --font-size-lg: calc(var(--base-font-size) * 1.618); /* ≈ 26px */
+  --font-size-xl: calc(var(--font-size-lg) * 1.618); /* ≈ 42px */
+  --font-size-md: var(--base-font-size); /* 16px */
+  --font-size-sm: calc(var(--base-font-size) / 1.618); /* ≈ 10px */
+  --font-size-xs: calc(var(--font-size-sm) / 1.618); /* ≈ 6px */
+}
+
+/* h1 {
+  font-size: var(--font-size-xl);
+}
+
+h2 {
+  font-size: var(--font-size-lg);
+}
+
+p,
+.body-text {
+  font-size: var(--font-size-md);
+}
+
+.small-text {
+  font-size: var(--font-size-sm);
+} */
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

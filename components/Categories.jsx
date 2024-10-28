@@ -6,7 +6,7 @@ import Link from 'next/link';
 const CategoryCard = ({ title, imgsrc, url }) => {
   return (
     <Link href={url}>
-      <div className="group relative flex h-36 w-36 flex-col items-center justify-center rounded-xl transition-all duration-300 md:h-48 md:w-48 xl:h-60 xl:w-56">
+      <div className="group relative flex h-36 w-40 flex-col items-center justify-center rounded-xl transition-all duration-300 sm:h-36 sm:w-64 md:h-48 md:w-48 xl:h-60 xl:w-56">
         <div className="relative z-10 h-full w-full">
           {/* Use the Image component from Next.js for optimized images */}
           <Image
@@ -14,20 +14,20 @@ const CategoryCard = ({ title, imgsrc, url }) => {
             alt={title}
             fill
             priority={false}
-            className="rounded-md object-cover transition-all duration-200 group-hover:scale-90 group-hover:blur-[0.8px]"
+            className="rounded-md object-cover transition-all duration-200 group-hover:scale-95 group-hover:blur-[0.6px]"
             sizes="
               (max-width: 768px) 200px, 
               (max-width: 1024px) 250px, 
               300px
             "
           />
-          <div className="absolute inset-0 bg-black bg-opacity-30 blur-[2px] transition-all group-hover:bg-gray-50 group-hover:bg-opacity-5"></div>
+          <div className="absolute inset-0 rounded-md bg-black bg-opacity-30 backdrop-blur-[0.6px] transition-all duration-200 group-hover:bg-bgCol/5 group-hover:backdrop-blur-0"></div>
         </div>
-        <div className="absolute z-20 flex min-w-32 items-center justify-center p-2">
+        <div className="absolute z-10 flex min-w-32 items-center justify-center p-2">
           {/* <div className="absolute h-full w-full translate-y-10 rounded-md bg-black bg-opacity-0 text-center transition-all duration-300 group-hover:translate-y-0 group-hover:bg-opacity-20" /> */}
           <span
             style={{ wordSpacing: '2px' }}
-            className="z-20 text-center text-sm uppercase tracking-wider text-bgCola transition-all duration-300 group-hover:font-medium group-hover:tracking-tight group-hover:text-tertiary lg:text-base"
+            className="z-10 text-center text-sm uppercase tracking-wider text-bgCola transition-all duration-300 group-hover:font-medium group-hover:tracking-tight group-hover:text-tertiary sm:group-hover:font-semibold lg:text-base"
           >
             {title}
           </span>
@@ -40,11 +40,16 @@ const CategoryCard = ({ title, imgsrc, url }) => {
 // CategoryCards component: renders multiple CategoryCard components
 const CategoryCards = ({ categories }) => {
   return (
-    <div className="my-10 flex flex-wrap items-center justify-center gap-8 md:px-4 2xl:px-12">
+    <div className="my-10 grid grid-cols-2 gap-6 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4 xl:grid-cols-4 xl:gap-14">
       {categories.map(({ title, imgsrc, url }) => (
         <CategoryCard key={title} title={title} imgsrc={imgsrc} url={url} />
       ))}
     </div>
+    // <div className="my-10 flex flex-wrap items-center justify-center gap-8 md:px-4 2xl:px-12">
+    //   {categories.map(({ title, imgsrc, url }) => (
+    //     <CategoryCard key={title} title={title} imgsrc={imgsrc} url={url} />
+    //   ))}
+    // </div>
   );
 };
 
@@ -66,7 +71,7 @@ const CategoriesSec = () => {
   ];
 
   return (
-    <div className="my-14 flex flex-col items-center">
+    <div className="my-14 flex flex-col items-center gap-2 lg:gap-4">
       <h3
         style={{ wordSpacing: '2px' }}
         className={`${styles.SecHeading} py-4 text-center tracking-tighter`}

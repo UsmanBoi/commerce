@@ -33,7 +33,7 @@
     "components/Categories.jsx",
     "components/layout/Hero.jsx",
     "app/contact/page.jsx",
-    "components/Featured.jsx"
+    "components/Featured.tsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -68,7 +68,7 @@ const ContactPage = ({ title }) => {
           <p>Regards</p>
           <ShopNow
             title="Send"
-            className="bg-myGray w-full text-bgCola hover:text-tertiary"
+            className="w-full bg-myGray text-bgCola hover:text-tertiary"
             link=""
           />
           {success && (

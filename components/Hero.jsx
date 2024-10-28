@@ -14,12 +14,12 @@ const heroData = [
   {
     image: '/Hero4.jpg',
     title: 'Create your dream space',
-    subheading: 'Explore unique designs and exclusive deals'
+    subheading: 'Explore custom designs and exclusive deals'
   },
   {
     image: '/Hero5.jpg',
     title: 'Affordable luxury living',
-    subheading: 'Transform your home with high-end looks at low-end prices'
+    subheading: 'Change your home with high-end looks at low-end prices'
   }
 ];
 
@@ -134,7 +134,7 @@ export function Hero() {
 
   return (
     <div ref={heroRef} className="mb-4">
-      <div className="relative h-[44rem] overflow-hidden">
+      <div className="relative h-[20rem] overflow-hidden md:h-[30rem] lg:h-[44rem]">
         {/* Image Slider */}
         <div className="absolute inset-0">
           {heroData.map((data, index) => (
@@ -156,10 +156,14 @@ export function Hero() {
 
         {/* Backdrop blur card for hero content */}
         <div
-          className={`${styles.paddingX} absolute left-10 top-1/2 z-10 mr-4 flex h-auto w-fit max-w-[40rem] -translate-y-1/2 transform flex-col justify-center gap-4 rounded-lg bg-white/25 p-8 shadow-lg backdrop-blur-sm lg:left-16 lg:mr-0 lg:max-w-[50rem]`}
+          className={`${styles.paddingX} absolute left-10 top-32 z-10 mr-4 flex h-[14rem] w-fit max-w-[40rem] -translate-y-1/2 transform flex-col justify-center gap-2 rounded-lg bg-white/25 p-8 shadow-lg backdrop-blur-sm sm:top-1/2 sm:h-auto sm:gap-4 lg:left-16 lg:mr-0 lg:max-w-[50rem]`}
         >
           {/* Animated Hero Heading */}
-          <h1 ref={heroHeadingRef} className={`${styles.HeroHeading} -ml-1`}>
+          <h1
+            ref={heroHeadingRef}
+            className={`${styles.HeroHeading} -ml-1`}
+            style={{ wordSpacing: '1px' }}
+          >
             {heroData[currentIndex].title}
           </h1>
 
@@ -178,7 +182,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
         {/* Pause/Play Button */}
-        <div className="absolute bottom-14 left-1/2 z-20 flex -translate-x-1/2 transform transition-all">
+        <div className="absolute bottom-9 left-1/2 z-20 flex -translate-x-1/2 transform transition-all sm:bottom-14">
           <button
             onClick={togglePause}
             className={`rounded-full bg-white bg-opacity-80 py-1 text-black opacity-20 shadow-md transition-all hover:bg-opacity-100 hover:opacity-80 ${
@@ -211,7 +215,7 @@ export function Hero() {
         </div>
 
         {/* Dots for navigation */}
-        <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 transform space-x-2 opacity-20 transition-all hover:opacity-80">
+        <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 transform space-x-2 opacity-20 transition-all hover:opacity-80 sm:bottom-5">
           {heroData.map((_, index) => (
             <div
               key={index}

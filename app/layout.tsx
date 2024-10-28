@@ -37,15 +37,26 @@ export const metadata = {
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const cartId = cookies().get('cartId')?.value;
-  // Don't await the fetch, pass the Promise to the context provider
   const cart = getCart(cartId);
 
   return (
     <html lang="en" className={GeistSans.variable}>
       <body className="bg-pink-50 bg-opacity-30 text-charcoal selection:bg-red-50 selection:text-black dark:selection:bg-pink-500 dark:selection:text-white">
         <CartProvider cartPromise={cart}>
+          <div
+            style={{ wordSpacing: '6px' }}
+            className="flex items-center justify-center bg-myGray py-1 text-txtpri"
+          >
+            😍 Free Delivery on <span className="px-2 text-gunMetal">+$250</span> order 😍
+          </div>
+          {/* Sticky Navbar on all devices */}
           <Navbar />
-          <Collection />
+
+          {/* Sticky Collection on large devices */}
+          <div className="sticky top-[56px] z-20 hidden bg-white lg:block">
+            <Collection />
+          </div>
+
           <main>{children}</main>
         </CartProvider>
       </body>

@@ -37,72 +37,79 @@ export function VariantSelector({
     )
   }));
 
-  return options.map((option) => (
-    <form key={option.id}>
-      <dl className="mb-8">
-        <dt className="mb-4 text-sm uppercase tracking-wide">{option.name}</dt>
-        <dd className="flex flex-wrap gap-3">
-          {option.values.map((value) => {
-            const optionNameLowerCase = option.name.toLowerCase();
+  return (
+    <div>
+      {' '}
+      {options.map((option) => (
+        <form key={option.id}>
+          <dl className="mb-8">
+            <dt className="mb-4 text-sm uppercase tracking-wide">{option.name}</dt>
+            <dd className="flex flex-wrap gap-3">
+              {option.values.map((value) => {
+                const optionNameLowerCase = option.name.toLowerCase();
 
-            // Base option params on current selectedOptions so we can preserve any other param state.
-            const optionParams = { ...state, [optionNameLowerCase]: value };
+                // Base option params on current selectedOptions so we can preserve any other param state.
+                const optionParams = { ...state, [optionNameLowerCase]: value };
 
-            // Filter out invalid options and check if the option combination is available for sale.
-            const filtered = Object.entries(optionParams).filter(([key, value]) =>
-              options.find(
-                (option) => option.name.toLowerCase() === key && option.values.includes(value)
-              )
-            );
-            const isAvailableForSale = combinations.find((combination) =>
-              filtered.every(
-                ([key, value]) => combination[key] === value && combination.availableForSale
-              )
-            );
+                // Filter out invalid options and check if the option combination is available for sale.
+                const filtered = Object.entries(optionParams).filter(([key, value]) =>
+                  options.find(
+                    (option) => option.name.toLowerCase() === key && option.values.includes(value)
+                  )
+                );
+                const isAvailableForSale = combinations.find((combination) =>
+                  filtered.every(
+                    ([key, value]) => combination[key] === value && combination.availableForSale
+                  )
+                );
 
-            // Find the variant by matching all selected options in the state
-            const variantId = variants.find((variant) =>
-              variant.selectedOptions.every((opt) => state[opt.name.toLowerCase()] === opt.value)
-            )?.id;
+                // Find the variant by matching all selected options in the state
+                const variantId = variants.find((variant) =>
+                  variant.selectedOptions.every(
+                    (opt) => state[opt.name.toLowerCase()] === opt.value
+                  )
+                )?.id;
 
-            // The option is active if it's in the selected options.
-            const isActive = state[optionNameLowerCase] === value;
+                // The option is active if it's in the selected options.
+                const isActive = state[optionNameLowerCase] === value;
 
-            return (
-              <button
-                formAction={() => {
-                  const newState = updateOption(optionNameLowerCase, value);
-                  updateURL(newState);
-                  // Find the correct variant based on the updated state
-                  const newVariantId = variants.find((variant) =>
-                    variant.selectedOptions.every(
-                      (opt) => newState[opt.name.toLowerCase()] === opt.value
-                    )
-                  )?.id;
-                  onVariantChangeAction(newVariantId);
-                }}
-                onClick={() => onVariantChangeAction(variantId)}
-                key={value}
-                aria-disabled={!isAvailableForSale}
-                disabled={!isAvailableForSale}
-                title={`${option.name} ${value}${!isAvailableForSale ? ' (Out of Stock)' : ''}`}
-                className={clsx(
-                  'flex min-w-[48px] items-center justify-center rounded-full border bg-neutral-100 px-2 py-1 text-sm dark:border-neutral-800 dark:bg-neutral-900',
-                  {
-                    'cursor-default ring-2 ring-blue-600': isActive,
-                    'ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-blue-600':
-                      !isActive && isAvailableForSale,
-                    'relative z-10 cursor-not-allowed overflow-hidden bg-neutral-100 text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 before:dark:bg-neutral-700':
-                      !isAvailableForSale
-                  }
-                )}
-              >
-                {value}
-              </button>
-            );
-          })}
-        </dd>
-      </dl>
-    </form>
-  ));
+                return (
+                  <button
+                    formAction={() => {
+                      const newState = updateOption(optionNameLowerCase, value);
+                      updateURL(newState);
+                      // Find the correct variant based on the updated state
+                      const newVariantId = variants.find((variant) =>
+                        variant.selectedOptions.every(
+                          (opt) => newState[opt.name.toLowerCase()] === opt.value
+                        )
+                      )?.id;
+                      onVariantChangeAction(newVariantId);
+                    }}
+                    onClick={() => onVariantChangeAction(variantId)}
+                    key={value}
+                    aria-disabled={!isAvailableForSale}
+                    disabled={!isAvailableForSale}
+                    title={`${option.name} ${value}${!isAvailableForSale ? ' (Out of Stock)' : ''}`}
+                    className={clsx(
+                      'flex min-w-[48px] items-center justify-center rounded-sm border bg-olive px-2 py-1 text-sm text-bgCol dark:border-neutral-800 dark:bg-neutral-900',
+                      {
+                        'cursor-default ring-2 ring-blue-600': isActive,
+                        'ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-blue-600':
+                          !isActive && isAvailableForSale,
+                        'relative z-10 cursor-not-allowed overflow-hidden bg-neutral-100 text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 before:dark:bg-neutral-700':
+                          !isAvailableForSale
+                      }
+                    )}
+                  >
+                    {value}
+                  </button>
+                );
+              })}
+            </dd>
+          </dl>
+        </form>
+      ))}
+    </div>
+  );
 }
