@@ -21,8 +21,8 @@ export default function HomePage() {
       <CategoriesSec />
       <BathtubSec />
       <Featured />
-      <ThreeItemGrid />
       <Carousel />
+      <ThreeItemGrid />
       <Footer />
     </>
   );

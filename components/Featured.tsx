@@ -12,7 +12,7 @@ export async function Featured() {
   const featuredProducts = [...products];
 
   return (
-    <div className="my-20 flex h-full w-full flex-col items-center gap-8 md:gap-12">
+    <div className="mb-10 mt-20 flex h-full w-full flex-col items-center gap-8 md:gap-12">
       <div className="flex flex-col items-center gap-2 lg:gap-4 lg:py-4">
         <h2 className={styles.SecHeading}>Featured Products</h2>
         <h3 className={styles.SecSubHeading}>Shop what Others love</h3>
@@ -49,7 +49,7 @@ export async function Featured() {
                   </p>
                 </div>
                 <div className="flex w-fit items-center gap-2 rounded-sm bg-tertiary/90 p-1 text-xs font-medium text-white sm:text-sm lg:py-[1px]">
-                  <span>{product.priceRange.minVariantPrice.currencyCode}</span>
+                  {/* <span>{product.priceRange.minVariantPrice.currencyCode}</span> */}
                   <span>{product.priceRange.minVariantPrice.amount.replace('.0', '')}</span>
                 </div>
               </div>

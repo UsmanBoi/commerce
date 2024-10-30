@@ -9,7 +9,7 @@ const Label = ({
 }: {
   title: string;
   amount: string;
-  currencyCode: string;
+  currencyCode?: string | '';
   position?: 'bottom' | 'center';
 }) => {
   return (
@@ -23,7 +23,7 @@ const Label = ({
         <Price
           className="flex-none rounded-full bg-blue-600 p-2 text-white"
           amount={amount}
-          currencyCode={currencyCode}
+          // currencyCode={currencyCode}
           currencyCodeClassName="hidden @[275px]/label:inline"
         />
       </div>

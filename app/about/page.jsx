@@ -10,6 +10,7 @@ const About = () => {
       <AboutUs />
       <Benefits />
       <Testimonials />
+      {/* <ImageSlider leftImage={leftImage} rightImage={rightImage} className="hidden lg:block" /> */}
       <CTASec />
     </div>
   );
