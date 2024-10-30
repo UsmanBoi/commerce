@@ -38,7 +38,7 @@ export function Hero() {
     if (!isPaused) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % heroData.length);
-      }, 5000); // Change every 5 seconds
+      }, 6000); // Change every 5 seconds
     }
   };
 
@@ -102,14 +102,14 @@ export function Hero() {
     gsap.to(currentImage, {
       x: '0%',
       duration: 1,
-      ease: 'power3.out'
+      ease: 'linear'
     });
 
     // Animate the previous image out to the right
     gsap.to(prevImage, {
       x: '100%',
       duration: 1,
-      ease: 'power3.in'
+      ease: 'linear'
     });
   }, [currentIndex]);
 
@@ -117,13 +117,13 @@ export function Hero() {
   useEffect(() => {
     gsap.fromTo(
       heroHeadingRef.current,
-      { x: -100, opacity: 0 },
-      { x: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
     );
     gsap.fromTo(
       heroSubHeadingRef.current,
-      { x: -100, opacity: 0 },
-      { x: 0, opacity: 1, duration: 1.2, delay: 0.1, ease: 'power3.out' }
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.2, delay: 0.1, ease: 'power3.out' }
     );
     gsap.fromTo(
       buttonRef.current,
