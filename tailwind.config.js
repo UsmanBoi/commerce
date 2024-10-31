@@ -14,12 +14,21 @@ const colors = {
     // tertiary: '#606c38',
     olive: '#606c38',
     myGray: '#5D666F',
+    desertsand: '#d8b4a0',
+    champpink: '#EDDDD4',
+    timberwolf: '#dbd3d8',
+    'white-antiflash': '#EFF1F3',
     slateGray: '#3A3F44',
     onyx: '#353839',
-    gunMetal: '#2C3E50',
+    gunMetal: {
+      100: '#2C3E50',
+      200: '#375B6D',
+      300: '#223843'
+    },
     deepSpace: '#2D2D2D',
     graphite: '#383838',
     charcoal: '#333333',
+    charcoal2: '#294451',
     myYellow: {
       500: '#EDAE0A'
     }

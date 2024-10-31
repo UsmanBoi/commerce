@@ -14,20 +14,20 @@ const CategoryCard = ({ title, imgsrc, url }) => {
             alt={title}
             fill
             priority={false}
-            className="rounded-md object-cover transition-all duration-200 group-hover:scale-95 group-hover:blur-[0.6px]"
+            className="rounded-md object-cover transition-all duration-300 ease-in-out group-hover:scale-95 group-hover:blur-[0.6px]"
             sizes="
               (max-width: 768px) 200px, 
               (max-width: 1024px) 250px, 
               300px
             "
           />
-          <div className="absolute inset-0 rounded-md bg-black bg-opacity-30 backdrop-blur-[0.6px] transition-all duration-200 group-hover:bg-bgCol/5 group-hover:backdrop-blur-0"></div>
+          <div className="absolute inset-0 rounded-md bg-black bg-opacity-30 transition-all duration-300 ease-in-out group-hover:bg-opacity-0 group-hover:backdrop-blur-0 md:backdrop-blur-[0.7px]"></div>
         </div>
         <div className="absolute z-10 flex min-w-32 items-center justify-center p-2">
           {/* <div className="absolute h-full w-full translate-y-10 rounded-md bg-black bg-opacity-0 text-center transition-all duration-300 group-hover:translate-y-0 group-hover:bg-opacity-20" /> */}
           <span
             style={{ wordSpacing: '2px' }}
-            className="z-10 text-center text-sm uppercase tracking-wider text-bgCola transition-all duration-300 group-hover:font-medium group-hover:tracking-tight group-hover:text-tertiary sm:group-hover:font-semibold lg:text-base"
+            className="group-hover:text-gunMetal-200 z-10 text-center text-sm uppercase tracking-wider text-bgCola transition-all duration-300 group-hover:font-medium group-hover:tracking-tight sm:group-hover:font-semibold lg:text-base"
           >
             {title}
           </span>

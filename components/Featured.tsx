@@ -12,21 +12,21 @@ export async function Featured() {
   const featuredProducts = [...products];
 
   return (
-    <div className="mb-10 mt-20 flex h-full w-full flex-col items-center gap-8 md:gap-12">
+    <div className="mb-10 flex h-full w-full flex-col items-center gap-8 md:gap-10 xl:gap-6">
       <div className="flex flex-col items-center gap-2 lg:gap-4 lg:py-4">
         <h2 className={styles.SecHeading}>Featured Products</h2>
         <h3 className={styles.SecSubHeading}>Shop what Others love</h3>
       </div>
-      <div className="grid w-full gap-2 px-4 sm:grid-cols-2 sm:gap-4 lg:gap-6 xl:grid-cols-3 xl:px-16 2xl:grid-cols-4 2xl:gap-8">
+      <div className="grid w-full gap-2 gap-y-4 px-4 sm:grid-cols-2 sm:gap-4 md:max-w-4xl lg:max-w-full lg:gap-x-4 lg:gap-y-6 lg:px-20 xl:grid-cols-3 xl:gap-4 xl:px-16 2xl:grid-cols-4 2xl:gap-6">
         {featuredProducts.map((product, i: number) => (
           <div
-            className={`flex min-w-[300px] flex-col gap-2 rounded-lg border-2 border-gray-200 p-3 transition-all duration-300 hover:shadow-lg sm:h-full sm:min-w-[300px] sm:justify-self-auto sm:p-4 md:p-5 lg:scale-100 lg:p-6`}
+            className={`flex min-w-[300px] flex-col gap-2 rounded-lg border-2 border-gray-200 p-3 transition-all duration-300 hover:shadow-lg sm:h-full sm:justify-self-auto sm:p-4 md:max-w-lg md:p-5 lg:scale-100 lg:p-6 lg:hover:-translate-y-4`}
             // ${i % 2 === 0 ? 'justify-self-start' : 'justify-self-end'}
             key={`${product.handle}${i}`}
           >
             <Link href={`/product/${product.handle}`} prefetch={true}>
               <div className="flex flex-col gap-2">
-                <div className="relative mb-1 h-64 w-full sm:h-60 md:h-72 lg:h-80">
+                <div className="s relative mb-1 h-64 w-full sm:h-60 md:h-72 lg:h-80">
                   <Image
                     src={product.featuredImage?.url}
                     fill

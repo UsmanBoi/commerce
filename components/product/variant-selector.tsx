@@ -43,7 +43,9 @@ export function VariantSelector({
       {options.map((option) => (
         <form key={option.id}>
           <dl className="mb-8">
-            <dt className="mb-4 text-sm uppercase tracking-wide">{option.name}</dt>
+            <dt className="text-gunMetal-300 mb-3 text-sm font-semibold uppercase tracking-wide">
+              {option.name}
+            </dt>
             <dd className="flex flex-wrap gap-3">
               {option.values.map((value) => {
                 const optionNameLowerCase = option.name.toLowerCase();
@@ -92,10 +94,11 @@ export function VariantSelector({
                     disabled={!isAvailableForSale}
                     title={`${option.name} ${value}${!isAvailableForSale ? ' (Out of Stock)' : ''}`}
                     className={clsx(
-                      'flex min-w-[48px] items-center justify-center rounded-sm border bg-olive px-2 py-1 text-sm text-bgCol dark:border-neutral-800 dark:bg-neutral-900',
+                      'text-gunMetal-300 ring-gunMetal-300 flex min-w-[48px] items-center justify-center rounded px-2 py-1 text-sm font-medium ring-1 transition-all dark:bg-neutral-900',
                       {
-                        'cursor-default ring-2 ring-blue-600': isActive,
-                        'ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-blue-600':
+                        'border-gunMetal-300 cursor-default border-[1px] px-4 font-semibold sm:px-6':
+                          isActive,
+                        'ring-1 transition-all duration-300 ease-in-out':
                           !isActive && isAvailableForSale,
                         'relative z-10 cursor-not-allowed overflow-hidden bg-neutral-100 text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 before:dark:bg-neutral-700':
                           !isAvailableForSale

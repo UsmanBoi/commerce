@@ -28,14 +28,14 @@ export function ProductDescription({
 
         {/* Display the price of the selected variant */}
         {selectedVariant ? (
-          <div className="mr-auto w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
+          <div className="bg-gunMetal-200 mr-auto w-auto rounded p-2 text-sm text-white">
             <Price
               amount={selectedVariant.price.amount}
               currencyCode={selectedVariant.price.currencyCode}
             />
           </div>
         ) : (
-          <div className="mr-auto w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
+          <div className="bg-gunMetal-200 mr-auto w-auto rounded p-2 text-sm text-white">
             <Price
               amount={product.priceRange.minVariantPrice.amount}
               currencyCode={product.priceRange.minVariantPrice.currencyCode}
