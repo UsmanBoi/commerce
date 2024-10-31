@@ -40,23 +40,24 @@ export async function Featured() {
                     className="rounded-md object-cover"
                   />
                 </div>
-                <div>
-                  <h3 className="truncate text-sm font-medium lg:text-lg lg:font-semibold">
+                <div className="my-1 flex flex-col gap-1">
+                  <h3 className="-mb-1 truncate text-sm font-medium sm:text-base lg:text-lg lg:font-semibold">
                     {product.title}
                   </h3>
                   <p className="truncate text-xs text-gray-600 sm:text-sm 2xl:text-base">
                     {product.description}
                   </p>
-                </div>
-                <div className="flex w-fit items-center gap-2 rounded-sm bg-tertiary/90 p-1 text-xs font-medium text-white sm:text-sm lg:py-[1px]">
-                  {/* <span>{product.priceRange.minVariantPrice.currencyCode}</span> */}
-                  <span>{product.priceRange.minVariantPrice.amount.replace('.0', '')}</span>
+                  <div className="bg-gunMetal-200/90 flex h-fit w-fit items-center gap-1 rounded p-2 text-xs font-medium text-white sm:text-sm lg:py-[1px]">
+                    {/* <span>{product.priceRange.minVariantPrice.currencyCode}</span> */}
+                    <span>$</span>
+                    <span>{product.priceRange.minVariantPrice.amount.replace('.0', '')}</span>
+                  </div>
                 </div>
               </div>
             </Link>
             <ShopNow
               title="Add to Cart"
-              className="-ml-1 mt-2 w-full scale-95 bg-olive text-bgCola hover:text-tertiary xl:-ml-[6px] xl:scale-90"
+              className="bg-gunMetal-300 hover:text-gunMetal-300 hover:border-gunMetal-300 -ml-1 mt-2 w-full scale-95 px-2 text-bgCola hover:bg-transparent xl:-ml-[6px] xl:scale-90"
               link={`/product/${product.handle}`}
             />
           </div>

@@ -24,7 +24,7 @@ export function ProductDescription({
   return (
     <>
       <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700">
-        <h1 className="mb-4 text-5xl font-medium">{product.title}</h1>
+        <h1 className="mb-4 text-4xl font-medium tracking-tighter lg:text-5xl">{product.title}</h1>
 
         {/* Display the price of the selected variant */}
         {selectedVariant ? (

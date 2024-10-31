@@ -38,15 +38,16 @@ export function VariantSelector({
   }));
 
   return (
-    <div>
-      {' '}
+    <div className="">
+      {/* <div className="grid-cols-[40px] md:grid md:grid-cols-2"> */}
+      {/* Main grid container for side-by-side layout */}
       {options.map((option) => (
         <form key={option.id}>
           <dl className="mb-8">
-            <dt className="text-gunMetal-300 mb-3 text-sm font-semibold uppercase tracking-wide">
+            <dt className="mb-3 text-sm font-semibold uppercase tracking-wide text-deepSpace">
               {option.name}
             </dt>
-            <dd className="flex flex-wrap gap-3">
+            <dd className="flex w-fit flex-wrap gap-3">
               {option.values.map((value) => {
                 const optionNameLowerCase = option.name.toLowerCase();
 
@@ -93,13 +94,41 @@ export function VariantSelector({
                     aria-disabled={!isAvailableForSale}
                     disabled={!isAvailableForSale}
                     title={`${option.name} ${value}${!isAvailableForSale ? ' (Out of Stock)' : ''}`}
+                    //All options outlined only increases px on active
+
+                    // className={clsx(
+                    //   'flex min-w-[48px] items-center justify-center rounded px-2 py-1 text-sm font-medium text-gunMetal-300 ring-1 ring-gunMetal-300 transition-all dark:bg-neutral-900',
+                    //   {
+                    //     'cursor-default border-[1px] border-gunMetal-300 px-4 font-semibold sm:px-6':
+                    //       isActive,
+                    //     'ring-1 transition-all duration-300 ease-in-out':
+                    //       !isActive && isAvailableForSale,
+                    //     'relative z-10 cursor-not-allowed overflow-hidden bg-neutral-100 text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 before:dark:bg-neutral-700':
+                    //       !isAvailableForSale
+                    //   }
+                    // )}
+
+                    // All options colored, active outlined
+
+                    // className={clsx(
+                    //   'flex min-w-[48px] items-center justify-center rounded bg-gunMetal-200 px-2 py-1 text-sm font-medium text-txtpri transition-all dark:bg-neutral-900',
+                    //   {
+                    //     'text-gunMetal-50 cursor-default border-[1px] border-gunMetal-200 bg-transparent px-4 font-semibold ring-1 sm:px-6':
+                    //       isActive,
+                    //     'transition-all duration-300 ease-in-out': !isActive && isAvailableForSale,
+                    //     'relative z-10 cursor-not-allowed overflow-hidden bg-neutral-100 text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 before:dark:bg-neutral-700':
+                    //       !isAvailableForSale
+                    //   }
+                    // )}
+
+                    // All options outlined, active colored
+
                     className={clsx(
-                      'text-gunMetal-300 ring-gunMetal-300 flex min-w-[48px] items-center justify-center rounded px-2 py-1 text-sm font-medium ring-1 transition-all dark:bg-neutral-900',
+                      'flex min-w-[48px] items-center justify-center rounded border-2 border-gunMetal-200 bg-opacity-0 px-2 py-1 text-sm font-medium text-gunMetal-300 transition-all dark:bg-neutral-900',
                       {
-                        'border-gunMetal-300 cursor-default border-[1px] px-4 font-semibold sm:px-6':
+                        'cursor-default bg-gunMetal-200/100 px-4 font-semibold text-txtpri sm:px-6':
                           isActive,
-                        'ring-1 transition-all duration-300 ease-in-out':
-                          !isActive && isAvailableForSale,
+                        'transition-all duration-300 ease-in-out': !isActive && isAvailableForSale,
                         'relative z-10 cursor-not-allowed overflow-hidden bg-neutral-100 text-neutral-500 ring-1 ring-neutral-300 before:absolute before:inset-x-0 before:-z-10 before:h-px before:-rotate-45 before:bg-neutral-300 before:transition-transform dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-700 before:dark:bg-neutral-700':
                           !isAvailableForSale
                       }
