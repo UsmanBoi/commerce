@@ -37,8 +37,8 @@ export function CollectionMenuItem({ item, isSubItem = false }: MenuItemProps) {
   return (
     <li
       className={clsx('relative list-none', {
-        'tracking-tight': isSubItem, // Add padding to sub-items for visual hierarchy
-        'font-normal': !isSubItem // Make top-level items bold
+        'w-24 tracking-tight': isSubItem, // Add padding to sub-items for visual hierarchy
+        'font-medium': !isSubItem // Make top-level items bold
       })}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -48,7 +48,7 @@ export function CollectionMenuItem({ item, isSubItem = false }: MenuItemProps) {
           target={item.path.startsWith('#') ? '' : '_blank'}
           href={item.path}
           className={clsx(
-            'text-sm leading-tight underline-offset-4 hover:font-medium hover:text-tertiary hover:underline dark:hover:text-neutral-300 md:inline-block lg:text-base lg:leading-normal',
+            'text-sm leading-tight underline-offset-4 transition-all hover:font-semibold hover:text-tertiary hover:underline dark:hover:text-neutral-300 md:inline-block lg:text-base lg:leading-normal',
             {
               'text-black dark:text-neutral-300': active,
               'text-gray-500': isSubItem // Apply a different color for sub-items

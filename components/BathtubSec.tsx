@@ -21,7 +21,7 @@ export async function BathtubSec() {
               src={featuredBathtubs[0]?.featuredImage?.url || '/fallback-image.jpg'} // Provide a fallback image
               alt={featuredBathtubs[0]?.title || 'Featured Bathtub'} // Provide a fallback alt text
               fill
-              sizes="(max-width: 768px) 160px, (max-width: 1024px) 320px, 640px"
+              sizes="(max-width: 768px) 160px, (max-width: 1024px) 350px, 700px"
               className="object-cover"
             />
           )}
@@ -30,12 +30,18 @@ export async function BathtubSec() {
         {/* Right container - divided into top and bottom */}
         <div className="grid grid-rows-2">
           {/* Top section - Text and CTA */}
-          <div className="flex flex-col justify-center bg-gray-100 text-center sm:p-8">
-            <h3 className="text-3xl font-medium">Deep soaking bathtubs are always in style</h3>
-            <p className="my-4 text-gray-700">
+          <div className="flex flex-col justify-center bg-gray-100 p-3 text-center sm:p-8">
+            <h3 className="text-2xl font-medium sm:text-3xl">
+              Deep soaking bathtubs are always in style
+            </h3>
+            <p className="my-4 text-sm sm:text-base">
               Sleek, contemporary styling that goes well with classic and modern décor.
             </p>
-            <ShopNow title="Shop Bathtubs" link={'/search/bathtubs'} className="" />
+            <ShopNow
+              title="Shop Bathtubs"
+              link={'/search/bathtubs'}
+              className="bg-gunMetal-200 text-sm text-white hover:text-gunMetal-200"
+            />
           </div>
 
           {/* Bottom section - two equal parts */}

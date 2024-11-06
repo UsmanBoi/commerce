@@ -7,14 +7,15 @@ import ChildrenWrapper from './children-wrapper';
 export default function SearchLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <div className="mt-4 text-center text-2xl font-semibold">Showing results for &nbsp; "{}"</div>
       <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 py-4 text-black dark:text-white md:flex-row">
-        <div className="order-first mt-[1px] w-full flex-none md:max-w-[125px]">
+        <div className="order-first w-full flex-none md:max-w-[125px]">
           <Collections />
         </div>
         <div className="order-last min-h-screen w-full md:order-none">
           <ChildrenWrapper>{children}</ChildrenWrapper>
         </div>
-        <div className="order-none mt-[1px] flex-none md:order-last md:w-[125px]">
+        <div className="order-none flex-none md:order-last md:w-[125px]">
           <FilterList list={sorting} title="Sort by" />
         </div>
       </div>

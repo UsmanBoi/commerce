@@ -41,11 +41,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang="en" className={GeistSans.variable}>
-      <body className="bg-champpink/5 text-charcoal selection:bg-red-50 selection:text-black dark:selection:bg-pink-500 dark:selection:text-white">
+      <body className="bg-[##F1F7ED]/95 text-graphite selection:bg-red-50 selection:text-black dark:selection:bg-pink-500 dark:selection:text-white">
         <CartProvider cartPromise={cart}>
           <div
             style={{ wordSpacing: '6px' }}
-            className="bg-gunMetal-300/90 flex items-center justify-center py-1 text-txtpri"
+            className="flex items-center justify-center bg-gunMetal-300/90 py-1 text-txtpri"
           >
             😍 Free Delivery on +$250 order 😍
           </div>

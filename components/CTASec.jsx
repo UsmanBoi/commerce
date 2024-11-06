@@ -1,4 +1,5 @@
 import React from 'react';
+import ShopNow from './ShopNow';
 
 const CTA = () => (
   <section className="flex flex-col items-center bg-gray-100 px-4 py-8 lg:px-16">
@@ -7,9 +8,11 @@ const CTA = () => (
       Discover our unique selection of vanities tailored to bring elegance and functionality to any
       room.
     </p>
-    <button className="rounded-lg bg-olive px-6 py-3 font-medium text-white transition hover:bg-opacity-90">
-      Shop Our Collection
-    </button>
+    <ShopNow
+      className="rounded bg-gunMetal-200 px-6 py-3 font-medium text-white transition hover:border-2 hover:bg-opacity-0 hover:font-semibold hover:text-gunMetal-200"
+      title="Shop Our Collection"
+      link="/search"
+    />
   </section>
 );
 

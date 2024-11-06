@@ -14,7 +14,7 @@
   --font-size-xs: calc(var(--font-size-sm) / 1.618); /* ≈ 6px */
 }
 
-/* h1 {
+h1 {
   font-size: var(--font-size-xl);
 }
 
@@ -29,7 +29,7 @@ p,
 
 .small-text {
   font-size: var(--font-size-sm);
-} */
+}
 
 /* @media (prefers-color-scheme: dark) {
   html {

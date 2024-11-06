@@ -1,4 +1,5 @@
 import { getAllBlogs } from 'lib/shopify/queries/blog';
+import React from 'react';
 
 interface BlogProps {
   blogs: {
@@ -46,12 +47,31 @@ const BlogPage = async () => {
                   />
                 )}
                 <div className="p-6">
-                  <h3 className="mb-3 text-2xl font-bold">{article.title}</h3>
-                  <p className="mb-5 text-gray-700">{article.excerpt}</p>
-                  <p>Published at &nbsp; {article.publishedAt.slice(0, 10)}</p>
+                  <h3 className="mb-2 text-xl font-bold capitalize md:text-2xl 2xl:text-3xl">
+                    {article.title}
+                  </h3>
+
+                  <p className="relative line-clamp-2 overflow-hidden text-sm text-gunMetal-300 sm:min-h-10 2xl:text-base">
+                    {article.excerpt ? article.excerpt : 'No summary'}
+                    <span
+                      className="absolute bottom-0 right-0 h-4 w-72"
+                      style={{
+                        background: 'linear-gradient(to left, #fff, transparent)'
+                      }}
+                    />
+                  </p>
+                  {/* {article.excerpt ? (
+                    <p className="mb-5 text-gray-700">{article.excerpt}</p>
+                  ) : (
+                    <p>No summary</p>
+                  )} */}
+                  <React.Fragment></React.Fragment>
+                  <p className="mb-1 mt-4">
+                    Published at &nbsp; {article.publishedAt.slice(0, 10)}
+                  </p>
                   <a
                     href={`/blogs/${blog.handle}/${article.handle}`}
-                    className="text-blue-500 hover:underline"
+                    className="font-semibold text-gunMetal-300 underline underline-offset-2 transition-all duration-200 ease-in-out hover:tracking-wider"
                   >
                     Read more
                   </a>
@@ -60,7 +80,10 @@ const BlogPage = async () => {
             ))}
             {blog.articles.edges.length > 3 && (
               <div className="mt-4 text-center">
-                <a href={`/blogs/${blog.handle}`} className="text-blue-500 hover:underline">
+                <a
+                  href={`/blogs/${blog.handle}`}
+                  className="text-gunMetal-300underline font-semibold underline-offset-2 transition-all duration-200 ease-in-out hover:tracking-wider"
+                >
                   Show All
                 </a>
               </div>
