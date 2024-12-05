@@ -4,19 +4,26 @@ const { colors: defaultColors } = require('tailwindcss/defaultTheme');
 const colors = {
   ...defaultColors,
   ...{
+    myPink: {
+      50: '#FFF3EB',
+      100: '#FFF8F0',
+      200: '#FFF8F3',
+      300: '#EDDDD4',
+      400: '#dbd3d8',
+      500: '#d8b4a0'
+    },
+    myblacks: {
+      50: '#333A3F',
+      100: '#262626'
+    },
     secwhite: '#F2F3F4',
     bgCol: '#FFF3EB',
     bgCola: '#FFF8F0',
-    buttonCol: '#FFF8F3',
-    txtpri: '#FFF3EB',
-    txtsec: '#001',
+    txtpri: '#333333',
+    txtsec: '#FFF3EB',
     tertiary: '#3A3F44',
-    // tertiary: '#606c38',
     olive: '#606c38',
     myGray: '#5D666F',
-    desertsand: '#d8b4a0',
-    champpink: '#EDDDD4',
-    timberwolf: '#dbd3d8',
     'white-antiflash': '#EFF1F3',
     slateGray: '#3A3F44',
     onyx: '#353839',
@@ -24,6 +31,8 @@ const colors = {
       50: '#223843',
       100: '#2C3E50',
       150: '#2C363F',
+      // 200: '#606c38',
+      // 300: '#606c38'
       200: '#375B6D',
       300: '#223843'
     },
@@ -45,7 +54,8 @@ module.exports = {
     extend: {
       colors: colors,
       fontFamily: {
-        sans: ['var(--font-geist-sans)']
+        sans: ['var(--font-josefinsans)', 'sans-serif'], // Default font
+        body: ['var(--font-montserrat)', 'sans-serif'] // For paragraphs
       },
       keyframes: {
         fadeIn: {

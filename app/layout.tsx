@@ -1,12 +1,25 @@
 import { CartProvider } from 'components/cart/cart-context';
 import Collection from 'components/layout/collectionMenu/collection';
 import { Navbar } from 'components/layout/navbar';
-import { GeistSans } from 'geist/font/sans';
+import ScrollToTopButton from 'components/ScrollToTopButton';
 import { getCart } from 'lib/shopify';
 import { ensureStartsWith } from 'lib/utils';
+import { Josefin_Sans, Montserrat } from 'next/font/google';
 import { cookies } from 'next/headers';
 import { ReactNode } from 'react';
 import './globals.css';
+
+const josefinSansFont = Josefin_Sans({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  variable: '--font-josefinsans' // Custom variable for the font
+});
+
+const montserratFont = Montserrat({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-montserrat' // Custom variable for the font
+});
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
@@ -40,14 +53,14 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const cart = getCart(cartId);
 
   return (
-    <html lang="en" className={GeistSans.variable}>
-      <body className="bg-[##F1F7ED]/95 text-graphite selection:bg-red-50 selection:text-black dark:selection:bg-pink-500 dark:selection:text-white">
+    <html lang="en" className={`${josefinSansFont.variable} ${montserratFont.variable}`}>
+      <body className="bg-[##F1F7ED]/95 text-txtpri selection:bg-red-50 selection:text-black dark:selection:bg-pink-500 dark:selection:text-white">
         <CartProvider cartPromise={cart}>
           <div
             style={{ wordSpacing: '6px' }}
-            className="flex items-center justify-center bg-gunMetal-300/90 py-1 text-txtpri"
+            className="flex items-center justify-center bg-gunMetal-300/90 py-1 text-txtsec"
           >
-            😍 Free Delivery on +$250 order 😍
+            Free Delivery on +$250 order
           </div>
           {/* Sticky Navbar on all devices */}
           <Navbar />
@@ -59,6 +72,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
           <main>{children}</main>
         </CartProvider>
+        <ScrollToTopButton />
       </body>
     </html>
   );

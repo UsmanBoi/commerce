@@ -33,13 +33,13 @@ const BlogArticlePage = async ({ params }: { params: { blog: string; article: st
   const article = data?.blogByHandle?.articleByHandle;
 
   if (!article) {
-    return <p className="text-center text-gray-500">Article not found.</p>;
+    return <p className="text-center">Article not found.</p>;
   }
 
   return (
     <div className="container mx-auto py-8">
       <h1 className="mb-4 text-center text-4xl font-bold">{article.title}</h1>
-      <p className="mb-4 text-center text-sm text-gray-500">
+      <p className="mb-4 text-center text-sm">
         {new Date(article.publishedAt).toLocaleDateString()} by {article.authorV2?.name}
       </p>
       {article.image?.src && (

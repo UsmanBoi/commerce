@@ -15,9 +15,12 @@ const Price = ({
     {`${new Intl.NumberFormat(undefined, {
       style: 'currency',
       currency: currencyCode,
-      currencyDisplay: 'narrowSymbol'
+      currencyDisplay: 'narrowSymbol',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
     }).format(parseFloat(amount))}`}
-    <span className={clsx('ml-2 inline', currencyCodeClassName)}>{`${currencyCode}`}</span>
+    <span className={clsx('inline', currencyCodeClassName)}></span>
+    {/* <span className={clsx('ml-2 inline', currencyCodeClassName)}>{`${currencyCode}`}</span> */}
   </p>
 );
 

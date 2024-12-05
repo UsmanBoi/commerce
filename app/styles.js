@@ -12,5 +12,5 @@ export const styles = {
   SecSubHeading: 'text-base lg:text-lg 2xl:text-xl font-medium w-fit tracking-tight text-tertiary',
 
   Button:
-    'bg-buttonCol font-medium sm:w-fit sm:h-fit py-3 px-4 rounded hover:bg-opacity-0 hover:border-[1px] hover:border-tertiary'
+    'bg-gunMetal-200 font-medium sm:w-fit sm:h-fit py-3 px-4 rounded hover:bg-opacity-0 hover:border-[1px] hover:border-tertiary'
 };

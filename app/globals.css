@@ -2,11 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  p {
+    @apply font-body;
+  }
+}
+
 :root {
   /* Base font size */
   --base-font-size: 16px;
 
-  /* Scaled font sizes using the golden ratio */
+  /* Scaled font sizes */
   --font-size-lg: calc(var(--base-font-size) * 1.618); /* ≈ 26px */
   --font-size-xl: calc(var(--font-size-lg) * 1.618); /* ≈ 42px */
   --font-size-md: var(--base-font-size); /* 16px */
@@ -31,11 +37,44 @@ p,
   font-size: var(--font-size-sm);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: calc(var(--font-size-xl) * 0.8); /* Slightly smaller on tablets */
   }
-} */
+
+  h2 {
+    font-size: calc(var(--font-size-lg) * 0.8);
+  }
+
+  p,
+  .body-text {
+    font-size: calc(var(--font-size-md) * 0.9); /* Slightly smaller on tablets */
+  }
+
+  .small-text {
+    font-size: calc(var(--font-size-sm) * 0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: calc(var(--font-size-xl) * 0.7); /* Smaller on mobile */
+  }
+
+  h2 {
+    font-size: calc(var(--font-size-lg) * 0.7);
+  }
+
+  p,
+  .body-text {
+    font-size: calc(var(--font-size-md) * 0.85); /* Smaller on mobile */
+  }
+
+  .small-text {
+    font-size: calc(var(--font-size-sm) * 0.85);
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -46,13 +85,3 @@ p,
     clip-path: inset(0.6px);
   }
 }
-
-/* a,
-input,
-button {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
-} */
-/* 
-p {
-  color: #495057;
-} */

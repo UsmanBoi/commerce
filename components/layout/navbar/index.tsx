@@ -1,8 +1,9 @@
 import CartModal from 'components/cart/modal';
+import LogoSquare from 'components/logo-square';
 import { getMenu } from 'lib/shopify';
 import { Menu } from 'lib/shopify/types';
 import Link from 'next/link';
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import MobileMenu from './mobile-menu';
 import Search, { SearchSkeleton } from './search';
 
@@ -22,8 +23,8 @@ export async function Navbar() {
         <div className="flex w-full items-center justify-between gap-2">
           <div className="flex w-full items-center md:w-1/3">
             <Link href="/" prefetch={true} className="mr-2 flex w-full md:w-auto lg:mr-6">
-              {/* <LogoSquare /> */}
-              <div className="hidden flex-none text-center text-xs font-medium uppercase leading-tight lg:block">
+              <LogoSquare />
+              {/* <div className="hidden flex-none text-center text-xs font-medium uppercase leading-tight lg:block">
                 {SITE_NAME?.toString()
                   .replaceAll(' ', '<br />')
                   .split('<br />')
@@ -33,7 +34,7 @@ export async function Navbar() {
                       <br />
                     </React.Fragment>
                   ))}
-              </div>
+              </div> */}
             </Link>
             <div className="px-6">
               {menu.length ? (

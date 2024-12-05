@@ -4,6 +4,7 @@ import CTASec from 'components/CTASec';
 import Faqs from 'components/Faqs';
 import Testimonials from 'components/Testimonials';
 import React from 'react';
+import ScrollToTopButton from 'components/ScrollToTopButton';
 
 const About = () => {
   return (
@@ -12,6 +13,7 @@ const About = () => {
       <Benefits />
       <Testimonials />
       <Faqs />
+      <ScrollToTopButton />
       {/* <ImageSlider leftImage={leftImage} rightImage={rightImage} className="hidden lg:block" /> */}
       <CTASec />
     </div>

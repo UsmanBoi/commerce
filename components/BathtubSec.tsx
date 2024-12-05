@@ -30,17 +30,17 @@ export async function BathtubSec() {
         {/* Right container - divided into top and bottom */}
         <div className="grid grid-rows-2">
           {/* Top section - Text and CTA */}
-          <div className="flex flex-col justify-center bg-gray-100 p-3 text-center sm:p-8">
-            <h3 className="text-2xl font-medium sm:text-3xl">
+          <div className="flex flex-col justify-center bg-gray-100 px-3 text-center sm:p-8">
+            <h3 className="text-2xl font-medium md:text-3xl">
               Deep soaking bathtubs are always in style
             </h3>
-            <p className="my-4 text-sm sm:text-base">
+            <p className="my-4 text-sm md:text-base">
               Sleek, contemporary styling that goes well with classic and modern décor.
             </p>
             <ShopNow
               title="Shop Bathtubs"
               link={'/search/bathtubs'}
-              className="bg-gunMetal-200 text-sm text-white hover:text-gunMetal-200"
+              className="self-center text-sm text-white hover:text-gunMetal-200"
             />
           </div>
 

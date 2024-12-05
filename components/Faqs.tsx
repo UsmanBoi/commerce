@@ -42,8 +42,8 @@ const Faqs: React.FC = () => {
   };
 
   return (
-    <section className="mx-auto w-full max-w-2xl px-6 py-8 lg:px-16">
-      <h2 className="mb-8 text-center text-3xl font-semibold">Frequently Asked Questions</h2>
+    <section className="mx-auto w-full max-w-2xl px-6 pb-8 pt-16 lg:px-16">
+      <h2 className="mb-8 text-center font-semibold">Frequently Asked Questions</h2>
       <div className="space-y-4">
         {faqData.map((faq, index) => (
           <div key={index} className="border-b border-gray-300 pb-4">
@@ -51,15 +51,15 @@ const Faqs: React.FC = () => {
               onClick={() => toggleFaqs(index)}
               className="flex w-full items-center justify-between py-2 text-left text-lg font-medium text-gunMetal-300 focus:outline-none"
             >
-              <span>{faq.question}</span>
+              <span className="text-sm sm:text-base">{faq.question}</span>
               <span>{openIndex === index ? '-' : '+'}</span>
             </button>
             {openIndex === index ? (
-              <p className="mt-1 max-h-40 overflow-hidden opacity-100 transition-all duration-300 ease-linear">
+              <p className="mt-2 max-h-40 overflow-hidden text-sm opacity-100 transition-all duration-300 ease-in-out">
                 {faq.answer}
               </p>
             ) : (
-              <p className="mt-1 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-linear">
+              <p className="mt-1 max-h-0 overflow-hidden text-[1px] opacity-0 transition-all duration-300 ease-in-out">
                 {faq.answer}
               </p>
             )}

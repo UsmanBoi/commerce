@@ -37,7 +37,7 @@ export async function Featured() {
                       (max-width: 768px) 180px, 
                       (max-width: 1024px) 220px, 
                       280px"
-                    className="rounded object-cover"
+                    className="rounded object-cover object-bottom"
                   />
                 </div>
                 <div className="my-1 flex flex-col gap-1">
@@ -57,7 +57,7 @@ export async function Featured() {
             </Link>
             <ShopNow
               title="Add to Cart"
-              className="-ml-1 mt-2 w-full bg-gunMetal-300 px-2 text-bgCola hover:border-gunMetal-300 hover:bg-transparent hover:text-gunMetal-300 sm:scale-95 xl:-ml-[6px] xl:scale-90"
+              className="-ml-1 mt-2 w-full px-2 text-bgCola hover:border-gunMetal-300 hover:bg-transparent hover:text-gunMetal-300 sm:scale-95 xl:-ml-[6px] xl:scale-90"
               link={`/product/${product.handle}`}
             />
           </div>

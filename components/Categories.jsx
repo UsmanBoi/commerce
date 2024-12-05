@@ -1,4 +1,3 @@
-import { styles } from 'app/styles';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -27,7 +26,7 @@ const CategoryCard = ({ title, imgsrc, url }) => {
           {/* <div className="absolute h-full w-full translate-y-10 rounded-md bg-black bg-opacity-0 text-center transition-all duration-300 group-hover:translate-y-0 group-hover:bg-opacity-20" /> */}
           <span
             style={{ wordSpacing: '2px' }}
-            className="group-hover:text-gunMetal-200 z-10 text-center text-sm uppercase tracking-wider text-bgCola transition-all duration-300 group-hover:font-medium group-hover:tracking-tight sm:group-hover:font-semibold lg:text-base"
+            className="z-10 text-center text-sm uppercase tracking-wider text-bgCola transition-all duration-300 group-hover:font-medium group-hover:tracking-tight group-hover:text-gunMetal-200 sm:group-hover:font-semibold lg:text-base"
           >
             {title}
           </span>
@@ -72,12 +71,12 @@ const CategoriesSec = () => {
 
   return (
     <div className="my-14 flex flex-col items-center gap-2 lg:gap-4">
-      <h3
+      <h1
         style={{ wordSpacing: '2px' }}
-        className={`${styles.SecHeading} py-4 text-center tracking-tighter`}
+        className={`py-4 text-center font-medium tracking-tighter`}
       >
         Browse through our categories
-      </h3>
+      </h1>
       <CategoryCards categories={categoriesData} />
     </div>
   );

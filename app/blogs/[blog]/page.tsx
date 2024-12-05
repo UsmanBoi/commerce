@@ -27,13 +27,8 @@ const BlogPage = async ({ params }: { params: { blog: string } }) => {
                 />
               )}
               <h2 className="mb-2 text-2xl font-semibold">{article.title}</h2>
-              <p
-                className="mb-4 text-gray-700"
-                dangerouslySetInnerHTML={{ __html: article.excerpt }}
-              />
-              {article.authorV2?.name && (
-                <p className="mb-4 text-sm text-gray-500">By {article.authorV2.name}</p>
-              )}
+              <p className="mb-4" dangerouslySetInnerHTML={{ __html: article.excerpt }} />
+              {article.authorV2?.name && <p className="mb-4 text-sm">By {article.authorV2.name}</p>}
               <a
                 href={`/blogs/${params.blog}/${article.handle}`}
                 className="text-olive-600 font-medium hover:underline"
@@ -43,7 +38,7 @@ const BlogPage = async ({ params }: { params: { blog: string } }) => {
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-500">No articles available.</p>
+          <p className="text-center">No articles available.</p>
         )}
       </div>
     </div>

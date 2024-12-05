@@ -12,16 +12,24 @@ const ShopNow = ({
   link: string | '';
 }) => {
   return (
-    <Link href={link}>
-      <button
-        className={clsx(
-          `${styles.Button} mt-2 transition-all`,
-          className // Optional extra classes
-        )}
-      >
-        {title}
-      </button>
-    </Link>
+    <button
+      className={clsx(
+        `${styles.Button} mt-2 transition-all`,
+        className // Optional extra classes
+      )}
+    >
+      <Link href={link}>{title}</Link>
+    </button>
+    // <Link href={link}>
+    //   <button
+    //     className={clsx(
+    //       `${styles.Button} mt-2 transition-all`,
+    //       className // Optional extra classes
+    //     )}
+    //   >
+    //     {title}
+    //   </button>
+    // </Link>
   );
 };
 

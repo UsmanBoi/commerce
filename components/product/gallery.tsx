@@ -33,7 +33,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
 
   return (
     <form>
-      <div className="flex h-full w-full flex-col items-center gap-4">
+      <div className="flex h-full w-full flex-col items-center gap-2">
         <div
           className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden"
           onMouseEnter={() => setIsZoomed(true)}

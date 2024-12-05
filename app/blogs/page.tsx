@@ -60,11 +60,7 @@ const BlogPage = async () => {
                       }}
                     />
                   </p>
-                  {/* {article.excerpt ? (
-                    <p className="mb-5 text-gray-700">{article.excerpt}</p>
-                  ) : (
-                    <p>No summary</p>
-                  )} */}
+
                   <React.Fragment></React.Fragment>
                   <p className="mb-1 mt-4">
                     Published at &nbsp; {article.publishedAt.slice(0, 10)}

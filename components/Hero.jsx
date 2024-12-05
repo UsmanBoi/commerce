@@ -2,26 +2,9 @@
 import { gsap } from 'gsap';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { heroData } from '../app/constants';
 import { styles } from '../app/styles';
 import ShopNow from './ShopNow';
-
-const heroData = [
-  {
-    image: '/Hero2.jpg',
-    title: 'Build the home you want',
-    subheading: 'Shop modern collections at the lowest price you can get'
-  },
-  {
-    image: '/Hero4.jpg',
-    title: 'Create your dream space',
-    subheading: 'Explore custom designs and exclusive deals'
-  },
-  {
-    image: '/Hero5.jpg',
-    title: 'Affordable luxury living',
-    subheading: 'Change your home with high-end looks at low-end prices'
-  }
-];
 
 export function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -174,7 +157,7 @@ export function Hero() {
 
           {/* Button */}
           <div ref={buttonRef} className="w-fit">
-            <ShopNow title="Shop Now" className="hover:text-white" link="/search" />
+            <ShopNow title="Shop Now" className="bg-myPink-200 hover:text-white" link="/search" />
           </div>
         </div>
 
